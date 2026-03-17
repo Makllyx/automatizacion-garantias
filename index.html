@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portal de Garantía | Consulta de Service Tag</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="brand">
+          <div class="brand__mark" aria-hidden="true"></div>
+          <div class="brand__text">
+            <div class="brand__name">Soporte</div>
+            <div class="brand__sub">Consulta de garantía</div>
+          </div>
+        </div>
+        <a class="topbar__link" href="#" aria-label="Ayuda (simulado)">Ayuda</a>
+      </header>
+
+      <main class="main">
+        <section class="hero">
+          <h1 class="hero__title">Consulta tu garantía</h1>
+          <p class="hero__subtitle">
+            Ingresa tu <strong>Service Tag / Número de serie</strong> para ver el estado de tu cobertura (simulación).
+          </p>
+        </section>
+
+        <!-- VISTA: FORMULARIO -->
+        <section class="card card--center view is-active" id="viewForm" aria-labelledby="formTitle">
+          <h2 class="card__title" id="formTitle">Buscar dispositivo</h2>
+          <p class="card__hint">Ejemplos: <span class="mono">ABC1234</span>, <span class="mono">dell007</span></p>
+
+          <form id="warrantyForm" class="form" novalidate>
+            <label class="field">
+              <span class="field__label">Service Tag / Número de serie</span>
+              <div class="field__control">
+                <input
+                  id="serviceTagInput"
+                  name="serviceTag"
+                  type="text"
+                  inputmode="text"
+                  autocomplete="off"
+                  placeholder="Ej: ABC1234"
+                  aria-describedby="errorText"
+                />
+              </div>
+              <span class="field__error" id="errorText" role="alert" aria-live="polite"></span>
+            </label>
+
+            <button class="btn btn--primary" type="submit" id="btnSubmit">
+              Consultar garantía
+            </button>
+
+            <!-- Loader (oculto por defecto) -->
+            <div class="loader" id="loader" aria-live="polite" aria-busy="true" hidden>
+              <div class="spinner" aria-hidden="true"></div>
+              <div class="loader__text">Consultando cobertura…</div>
+            </div>
+          </form>
+        </section>
+
+        <!-- VISTA: RESULTADOS -->
+        <section class="card view" id="viewResult" aria-labelledby="resultTitle" hidden>
+          <div class="card__header">
+            <h2 class="card__title" id="resultTitle">Resultado</h2>
+            <span class="badge" id="badgeStatus">Estado</span>
+          </div>
+
+          <div id="resultBody" class="result"></div>
+
+          <div class="actions">
+            <button class="btn btn--ghost" type="button" id="btnNewQuery">Nueva consulta</button>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <div class="footer__row">
+          <span>© 2026 Portal de Garantía (Demo)</span>
+          <span class="footer__dot" aria-hidden="true">•</span>
+          <span>Sin backend, datos simulados</span>
+        </div>
+      </footer>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
